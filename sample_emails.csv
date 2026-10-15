@@ -1,0 +1,11 @@
+text,label
+"Urgent: verify your account now at http://secure-login-example.com or your account will be suspended",phishing
+"Your mailbox is full. Click here to keep your email active: http://mailbox-check-example.net",phishing
+"Congratulations, you won a prize. Submit your bank details to claim it immediately",phishing
+"We detected unusual activity. Confirm your password using this link now",phishing
+"Your payment failed. Update billing information at http://payment-update-example.org",phishing
+"Please review the updated project report before Friday",safe
+"Your appointment is confirmed for 2:30 PM on Thursday",safe
+"Here is the receipt for your recent purchase. Thank you for shopping with us",safe
+"Can we move tomorrow's project meeting to 10 AM? The agenda is attached",safe
+"The class timetable has been uploaded to the college portal",safe

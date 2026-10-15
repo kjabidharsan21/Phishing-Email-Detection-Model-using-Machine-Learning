@@ -1,28 +1,59 @@
-## Phishing Email Detection Model using Machine Learning
+# Phishing Email Detection Model
 
-This project focuses on detecting phishing emails using Machine Learning and Python. Phishing emails are designed to trick users into sharing sensitive information, such as passwords, banking details, and account credentials, by pretending to be legitimate messages.
+A beginner-friendly machine-learning mini-project using **Scikit-learn**. It combines:
+- **TF-IDF** text features (words and two-word phrases)
+- **URL and keyword indicators** (URL count, IP-based URLs, urgency, credential requests, reward language, and more)
+- **Logistic Regression** classification
+- Accuracy, classification report, and a saved confusion-matrix plot
+- An interactive prompt to test new email text
 
-The model uses **Scikit-learn** to analyze email text, identify suspicious keywords, and examine URL-related features to classify messages as **Phishing** or **Safe**. It uses TF-IDF for text feature extraction and Logistic Regression for classification.
+## 1. Requirements
 
-The project also evaluates the model using accuracy, a classification report, and a confusion matrix to understand its performance. Users can enter new email messages and check the model's predictions.
+Install Python 3.10+ and open a terminal in this project folder.
 
-### Key Features
-- Classifies emails as phishing or safe.
-- Extracts meaningful features from email text using TF-IDF.
-- Analyzes suspicious URLs and common phishing-related keywords.
-- Uses Logistic Regression for classification.
-- Displays accuracy, classification metrics, and a confusion matrix.
-- Allows users to test new email messages interactively.
+```bash
+pip install -r requirements.txt
+```
 
-### Technologies Used
-- Python
-- Scikit-learn
-- Pandas
-- Matplotlib
-- TF-IDF Vectorization
-- Logistic Regression
+## 2. Run
 
-### Learning Outcomes
-Through this project, I explored text preprocessing, feature extraction, supervised machine learning, model evaluation, and phishing email detection. This project helped me understand how machine learning can be applied to a real-world cybersecurity problem.
+```bash
+python phishing_detector.py
+```
 
-**Note:** The current version includes a small demonstration dataset. Real-world performance depends on training and evaluating the model with a larger, representative dataset.
+The program saves `confusion_matrix.png` in the project folder and then lets you paste an email to classify. Type `quit` to exit.
+
+## 3. Use your own dataset (recommended)
+
+Create `data/emails.csv` with at least these two columns:
+
+```csv
+text,label
+"Urgent: verify your account using this link",phishing
+"Please find the meeting agenda attached",safe
+```
+
+Labels can be `phishing` / `safe`; common alternatives like `spam` / `ham` and `1` / `0` are also accepted. Include many examples from both classes. Keep the test set separate from training through the included split, and avoid duplicate or near-duplicate emails across splits.
+
+If `data/emails.csv` is absent, the project uses a tiny built-in **demonstration dataset** so you can run it immediately. Metrics from that small dataset are only a pipeline demonstration and must not be reported as real-world performance.
+
+## 4. Project workflow
+
+1. Load labeled emails.
+2. Split into training and testing sets.
+3. Convert email text into TF-IDF vectors.
+4. Extract URL and social-engineering indicators.
+5. Train Logistic Regression.
+6. Evaluate on the held-out test set.
+7. Show a confusion matrix and classify new input.
+
+## 5. Important limitations
+
+- No model can guarantee an email is safe. Treat predictions as a warning signal, not a security decision.
+- Performance depends on dataset size, quality, language, and how representative the examples are.
+- This starter project does not parse full `.eml` headers, attachments, sender reputation, or live URLs.
+- Do not click links in suspicious messages. Use a safe, isolated environment for security testing.
+
+## Suggested dataset sources
+
+Look for reputable public phishing-email datasets from academic repositories or Kaggle. Check the license, labels, and provenance before use. Never include personal inbox data without removing sensitive information and obtaining appropriate permission.
